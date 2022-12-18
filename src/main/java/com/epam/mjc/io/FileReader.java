@@ -24,18 +24,20 @@ public class FileReader {
                     case 3:
                         phone = str;
                         break;
+                    default:
+                        break;
                 }
                 i++;
             }
             bufferedReader.close();
         } catch (IOException exception) {
-            System.out.println(exception.getMessage());
+            System.err.println(exception.getMessage());
         }
 
-        name = name.replaceAll("Name: ", "");
-        age = age.replaceAll("Age: ", "");
-        email = email.replaceAll("Email: ", "");
-        phone = phone.replaceAll("Phone: ", "");
+        name = name.replace("Name: ", "");
+        age = age.replace("Age: ", "");
+        email = email.replace("Email: ", "");
+        phone = phone.replace("Phone: ", "");
 
         return new Profile(name, Integer.parseInt(age), email, Long.parseLong(phone));
     }
